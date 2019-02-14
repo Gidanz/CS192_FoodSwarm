@@ -1,0 +1,22 @@
+{% extends "Foodswarm/base.html" %}
+{% block content %}
+	{% for foodstall in foodstalls %}
+
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2">Time Updated: {{ foodstall.time_updated|date:"fA M d, Y" }}</a>
+		      <small class="text-muted">{{ foodstall.operatinghrs }}</small>
+		    </div>
+		    <h2><a class="article-title" href="#">{{ foodstall.name }}</a></h2>
+		    <p class="article-content">Description: {{ foodstall.description }}</p>
+		    <p class="article-content">Location: {{ foodstall.location }}</p>
+		    <p class="article-content">Capacity: {{ foodstall.capacity }}</p>
+		    <p class="article-content">Tables: {{ foodstall.tables }}</p>
+		    <p class="article-content">Chairs: {{ foodstall.chairs }}</p>
+		  </div>
+		</article>
+
+	{% endfor %}
+
+{% endblock content %}
