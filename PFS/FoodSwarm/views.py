@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import DetailView
 from .models import FoodStall
-
 from FoodSwarm.models import FoodStall
 
 # Create your views here.

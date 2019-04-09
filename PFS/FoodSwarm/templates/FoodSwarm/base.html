@@ -1,12 +1,12 @@
 
 <!doctype html>
 <html lang="en">
+{% if user.is_authenticated %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     {% block title %}{% endblock %}
 
     <!-- Bootstrap core CSS -->
@@ -49,6 +49,7 @@
         <a href="/profile/"
         {% if request.path == "/profile/" %}class="nav-link active"
         {% else %}class="nav-link"
+
         {% endif %}>User Profile</a>
 
         <a href="/"
@@ -85,4 +86,7 @@
     <script src="/static/FoodSwarm/js/bootstrap.min.js"></script>
     <script src="/static/FoodSwarm/js/holder/holder.min.js"></script>
   </body>
+  {% else %}
+  <meta http-equiv="refresh" content="0; URL='/accounts/login/'" />
+  {% endif %}
 </html>
