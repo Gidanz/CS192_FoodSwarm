@@ -1,0 +1,84 @@
+{% extends "Foodswarm/base.html" %}
+
+{% block title %}
+<title>Foodswarm - Update</title>
+{% endblock %}
+
+{% block content %}
+
+<main role="main" class="container pt-sm-4">
+  <div class="container no-gutters border rounded shadow-sm position-relative pt-sm-1">
+    <h1 class="text-dark display-4 px-sm-5">Update Food Stall</h1>
+    <form class="needs-validation px-sm-5 py-sm-3" novalidate>
+      <div class="row mb-3">
+        <div class="col-4">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="{{ foodstall.name}}" value="" required>
+          <div class="invalid-feedback">
+            Name is required.
+          </div>
+        </div>
+        <div class="col">
+          <label for="address">Location</label>
+          <input type="text" class="form-control" id="address" placeholder="{{ foodstall.location}}" required>
+          <div class="invalid-feedback">
+            Address is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-4">
+          <label for="capacity">Capacity</label>
+          <input type="text" class="form-control" id="capacity" placeholder="{{ foodstall.capacity}}" value="" required>
+          <div class="invalid-feedback">
+            This field is required.
+          </div>
+        </div>
+        <div class="col-2">
+          <label for="tables">Tables</label>
+          <input type="text" class="form-control" id="tables" placeholder="{{ foodstall.tables}}" required>
+          <div class="invalid-feedback">
+            This field is required.
+          </div>
+        </div>
+        <div class="col-2">
+          <label for="chairs">Chairs</label>
+          <input type="text" class="form-control" id="chairs" placeholder="{{ foodstall.chairs}}" required>
+          <div class="invalid-feedback">
+            This field is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address">Operating Hours</label>
+        <input type="text" class="form-control" id="address" placeholder="Mon - Sun 9:00AM - 9:00PM" required>
+        <div class="invalid-feedback">
+          This field is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address2">Peak Hours <span class="text-muted">(Optional)</span></label>
+        <input type="text" class="form-control" id="address2" placeholder="Mon - Fri 11:00AM - 1:00PM">
+      </div>
+
+      <h4 class="mb-3">Add Photos</h4>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+
+      <hr class="mb-4">
+      <button class="btn btn-success btn-primary btn-lg btn-block" type="submit">Update Food Stall</button>
+    </form>
+  </div>
+</main>
+
+{% endblock content %}

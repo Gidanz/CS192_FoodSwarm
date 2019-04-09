@@ -1,0 +1,89 @@
+{% extends "Foodswarm/base.html" %}
+
+{% block title %}
+<title>Foodswarm - {{ foodstall.name}}</title>
+{% endblock %}
+
+{% block content %}
+
+<main role="main" class="container pt-sm-3">
+  <div class="container no-gutters border rounded shadow-sm position-relative">
+    <div class="row">
+      <div class="col px-sm-5">
+        <div class="col">
+          <h1 class="text-dark display-4">{{ foodstall.name}}</h1>
+          <h4 class="text-dark mb-3">CROWDED</h4>
+        </div>
+        <div class="col">
+          <p class="text-body"><b>Location:</b> {{ foodstall.location}}</p>
+          <p class="text-body"><b>Capacity:</b> {{ foodstall.capacity}}</p>
+          <p class="text-body"><b>Tables:</b> {{ foodstall.tables}}</p>
+          <p class="text-body"><b>Chairs:</b> {{ foodstall.chairs}}</p>
+          <p class="text-body"><b>Operating Hours:</b> {{ foodstall.operatinghrs}}</p>
+          <p class="text-body"><b>Peak Hours:</b> {{ foodstall.peakhrs}}</p>
+          <small class="text-muted">Last Updated: {{ foodstall.time_updated|date:"fA M d, Y" }}</small>
+          <a href="{% url 'FoodSwarm-Update' foodstall.pk %}" type="button" class="btn btn-block btn-secondary">Update</a>
+        </div>
+      </div>
+      <div class="col-sm px-sm-5 pt-sm-5">
+        <div id="photos" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#photos" data-slide-to="0" class="active"></li>
+            <li data-target="#photos" data-slide-to="1"></li>
+            <li data-target="#photos" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img width="500px" src="https://images.unsplash.com/photo-1521473717695-e8f5635b7f6a">
+            </div>
+            <div class="carousel-item">
+              <img width="500px" src="https://images.unsplash.com/photo-1485677959733-60c357f80d3e">
+            </div>
+            <div class="carousel-item">
+              <img width="500px" src="https://images.unsplash.com/photo-1461530927168-44328109da52">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row px-sm-5">
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="text-dark border-bottom border-gray pb-2 mb-0">Comments</h6>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">See all comments</a>
+        <form class="col pt-sm-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Add a comment">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-secondary">Post</button>
+            </div>
+          </div>
+        </form>
+      </small>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}
