@@ -1,7 +1,7 @@
 {% extends "Foodswarm/base.html" %}
 
 {% block title %}
-<title>Foodswarm - Home</title>
+<title>Foodswarm - Profile</title>
 {% endblock %}
 
 {% block content %}
@@ -16,8 +16,8 @@
       </div>
       <div class="col-8  px-sm-5">
         <div class="col">
-          <h1 class="text-dark display-4">@username</h1>
-          <h4 class="text-dark mb-3">example@email.com</h4>
+          <h1 class="text-dark display-4">s{{ user.username }}</h1>
+          <h4 class="text-dark mb-3">{{ user.email }}</h4>
         </div>
         <div class="col">
           <!-- <p class="text-body">add more info here</p> -->
