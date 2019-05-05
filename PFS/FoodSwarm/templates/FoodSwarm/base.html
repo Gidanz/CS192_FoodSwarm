@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html lang="en">
 {% if user.is_authenticated %}
@@ -25,20 +25,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="/report/">Report Food Stall Queue Status</a>
-          </li>
+          </li>-->
           <li class="nav-item">
-            <a class="nav-link" href="/request/">Request to Add New Food Stall</a>
+            {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="/about/">Contact Food Swarm Team</a>
-          </li>
+          </li>-->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!--<form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form>-->
     </div>
   </nav>
 
@@ -46,18 +48,24 @@
       <nav class="nav nav-underline">
         <!-- {% url 'Foodswarm-Favorites' as favorite %}
         {% url 'Foodswarm-Near' as near %} -->
-        <a href="/profile/"
-        {% if request.path == "/profile/" %}class="nav-link active"
-        {% else %}class="nav-link"
-
-        {% endif %}>User Profile</a>
+        <a href="{% url 'profile' %}" class="nav-link active">User Profile</a>
 
         <a href="/"
         {% if request.path == "/" %}class="nav-link active"
         {% else %}class="nav-link"
         {% endif %}>Food Stalls</a>
 
-        <a href="/favorites/"
+        <a href="{% url 'FoodSwarm-Update' %}" class="nav-link active">
+          Food Stall Updates
+          <span class="badge badge-pill bg-light align-text-bottom"></span>
+        </a>
+
+        <a href="{% url 'FoodStall-Create' %}" class="nav-link active">
+          Request To Add New Food Stall
+          <span class="badge badge-pill bg-light align-text-bottom"></span>
+        </a>
+
+        <!--<a href="/favorites/"
         {% if request.path == "/favorites/" %}class="nav-link active"
         {% else %}class="nav-link"
         {% endif %}>
@@ -71,7 +79,7 @@
         {% endif %}>
           Near Me
           <span class="badge badge-pill bg-light align-text-bottom">4</span>
-        </a>
+        </a>-->
       </nav>
     </div>
 

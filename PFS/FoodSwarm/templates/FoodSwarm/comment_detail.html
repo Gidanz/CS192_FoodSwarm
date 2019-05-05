@@ -1,0 +1,15 @@
+{% extends "Foodswarm/base.html" %}
+{% load static %}
+{% block content %}
+
+	      <div class="media text-muted pt-3 px-sm-3" >
+	        <img class="square article-img" width="150px" src="{% static 'FoodSwarm/STALLS/' %}{{object.fs_name}}.png" onerror="this.src='https://images.unsplash.com/photo-1521473717695-e8f5635b7f6a'" alt="">
+	        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+	          <strong class="d-block text-dark display-4 px-sm-3">{{ object.fs_name }}</strong>
+	          <strong class="d-block text-gray-dark px-sm-3">{{ object.date_posted|date:"M d, Y --- fA " }}</strong>
+	          <!--<strong class="d-block text-gray-dark">{{ user.username }}</strong>-->
+	          <small class="text-muted px-sm-3">{{ object.status }}</small>
+	        </p>
+	      </div>
+
+{% endblock content %}

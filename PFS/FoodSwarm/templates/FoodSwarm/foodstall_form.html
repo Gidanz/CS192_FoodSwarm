@@ -1,0 +1,23 @@
+{% extends "Foodswarm/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Foodswarm - Update</title>
+{% endblock %}
+
+{% block content %}
+
+<main role="main" class="container pt-sm-4">
+  <div class="container no-gutters border rounded shadow-sm position-relative pt-sm-1">
+    <h1 class="text-dark display-4 px-sm-5">Suggest New Food Stall</h1>
+    <form class="needs-validation px-sm-5 py-sm-3" method="POST" novalidate>
+    	{% csrf_token %}
+    	<fieldset class="form-group">
+    		{{ form|crispy }}
+    	</fieldset>
+    	<hr class="mb-4">
+      <button class="btn btn-success btn-primary btn-lg btn-block" type="submit">Update Food Stall</button>	
+    </form>
+  </div>
+</main>
+
+{% endblock content %}

@@ -11,18 +11,18 @@
     <div class="row">
       <div class="col px-sm-5">
         <div class="col">
-          <h1 class="text-dark display-4">{{ foodstall.name}}</h1>
-          <h4 class="text-dark mb-3">CROWDED</h4>
+          <h1 class="text-dark display-4">{{ object.name}}</h1>
+          <h4 class="text-dark mb-3">Location: {{ object.location}}</h4>
         </div>
         <div class="col">
-          <p class="text-body"><b>Location:</b> {{ foodstall.location}}</p>
-          <p class="text-body"><b>Capacity:</b> {{ foodstall.capacity}}</p>
-          <p class="text-body"><b>Tables:</b> {{ foodstall.tables}}</p>
-          <p class="text-body"><b>Chairs:</b> {{ foodstall.chairs}}</p>
-          <p class="text-body"><b>Operating Hours:</b> {{ foodstall.operatinghrs}}</p>
-          <p class="text-body"><b>Peak Hours:</b> {{ foodstall.peakhrs}}</p>
-          <small class="text-muted">Last Updated: {{ foodstall.time_updated|date:"fA M d, Y" }}</small>
-          <a href="{% url 'FoodSwarm-Update' foodstall.pk %}" type="button" class="btn btn-block btn-secondary">Update</a>
+          <p class="text-body"><b>Description:</b> {{ object.description }}</p>
+          <p class="text-body"><b>Total Capacity:</b> {{ object.capacity}}</p>
+          <p class="text-body"><b>Number of Tables:</b> {{ object.tables}}</p>
+          <p class="text-body"><b>Number of Seats:</b> {{ object.chairs}}</p>
+          <p class="text-body"><b>Operating Hours:</b> {{ object.operatinghrs}}</p>
+          <p class="text-body"><b>Peak Hours:</b> {{ object.peakhrs}}</p>
+          <small class="text-muted">FoodStall Date Added: {{ object.time_updated|date:"M d, Y" }}</small>
+          <a href="{% url 'Comment-Create' %}" type="button" class="btn btn-block btn-secondary">Update Food Stall Status</a>
         </div>
       </div>
       <div class="col-sm px-sm-5 pt-sm-5">
@@ -46,37 +46,32 @@
         </div>
       </div>
     </div>
+
     <div class="row px-sm-5">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="text-dark border-bottom border-gray pb-2 mb-0">Comments</h6>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@username</strong>
-          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@username</strong>
-          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </p>
-      </div>
-      <div class="media text-muted pt-3">
-        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@username</strong>
-          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </p>
-      </div>
+      <h6 class="text-dark border-bottom border-gray pb-2 mb-0">FoodStall Status</h6>
+
+      {% for samples in Comments %}
+		  {% if samples.fs_name == object.name %}
+	      <div class="media text-muted pt-3">
+	        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+	        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+	          <strong class="d-block text-gray-dark">{{ samples.date_posted|date:"M d, Y --- fA " }}</strong>
+	          <!--<strong class="d-block text-gray-dark">{{ user.username }}</strong>-->
+	          <small class="text-muted">{{ samples.status }}</small>
+	        </p>
+	        
+	      </div>
+		  {% endif %}
+	    {% endfor %}
+
       <small class="d-block text-right mt-3">
-        <a href="#">See all comments</a>
+        <a href="{% url 'FoodSwarm-Update' %}">See all comments</a>
         <form class="col pt-sm-3">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Add a comment">
+            <!--<input type="text" class="form-control" placeholder="Add a comment">-->
             <div class="input-group-append">
-              <button type="submit" class="btn btn-secondary">Post</button>
+              <!--<button type="submit" class="btn btn-secondary">Post</button>-->
             </div>
           </div>
         </form>

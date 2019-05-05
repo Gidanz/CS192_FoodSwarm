@@ -1,0 +1,38 @@
+{% extends "Foodswarm/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Foodswarm - Home</title>
+{% endblock %}
+
+{% block content %}
+<main role="main" class="container pt-sm-3">
+  <div class="container no-gutters border rounded shadow-sm position-relative pt-sm-1">
+    <div class="row">
+      <div class="col-sm py-sm-5">
+        <img style="margin-bottom: 20px; margin-left: 20px;" width="310px" src="{{ user.profile.image.url }}" onerror="this.src='https://memegene.net/sites/default/files/wallpaper/profile-clipart/180720/profile-clipart-default-180720-8178354.jpg">
+      </div>
+      <div class="col-8  px-sm-5">
+        <div class="col">
+          <h1 class="text-dark display-4">{{ user.username }}</h1>
+          <h4 class="text-dark mb-3">{{ user.email }}</h4>
+        </div>
+        <div class="col">
+          <!-- <p class="text-body">add more info here</p> -->
+	  		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Profile Info</legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button type="submit" class="btn btn-block btn-secondary">Update Profile Info</button>
+			</div>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+{% endblock content %}
