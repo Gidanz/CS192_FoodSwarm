@@ -21,13 +21,6 @@
         {% if form.errors %}
         <div class="alert alert-danger" role="alert"><small>The username and password you entered did not match our records. Please double-check and try again</small></div>
         {% endif %}
-        <form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
         <form class="login-form" method="POST" action="/login/">
           {% csrf_token %}
           <!-- {{form.a_sp}} -->
@@ -36,7 +29,7 @@
           <!-- <a href="{% url 'login' %}">login</a> -->
           <button type="submit" value="Log in">login</button>
           <!--<p class="link"><a href="#">Forgot Password?</a></p>-->
-          <p class="message"><a href="{% url 'register' %}">Create an account</a></p>
+          <p class="message">Need an account? <a href="{% url 'register' %}">Sign Up</a></p>
         </form>
       </div>
     </div>

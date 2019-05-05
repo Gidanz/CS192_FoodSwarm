@@ -12,11 +12,10 @@ def register(request):
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			messages.success(request, f'Your Account has been successfully created! You are now able to log in!')
-			return redirect('login')
+			return redirect('FoodSwarm-Home')
 	else:
 		form = UserRegisterForm()
-	return render(request, 'registration/register.html', {'form': form})
+	return render(request, 'users/register.html', {'form': form})
 
 @login_required
 def profile(request):
